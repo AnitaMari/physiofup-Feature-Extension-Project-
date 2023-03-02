@@ -7,26 +7,7 @@ import AddExerciseForm from './AddExerciseForm'; //I ADDED THIS
 
 function ExercisesList(props) {
   const [editingEx, setEditingEx] = useState(null);
-  // const { id } = useParams();
-  // const program = programs.find((program) => +program.id === +id);
   
-
-  //This code is to display eitable input fields:
-  // const [data, setData] = useState();
-  
-//   function handleSubmit(event) {
-//     event.preventDefault();
-//     props.modifyEx(data);
-//     setData('');
-//   }
-//   function handleChange(event) {
-//     let { name, value } = event.target;
-//         setData(data => ({
-//             ...data, 
-//             [name]: value
-//         }));
-//     }
-
 function handleClick(exId) {
     setEditingEx(exId)
 }
@@ -39,7 +20,7 @@ function handleClick(exId) {
                 props.exercises.map(ex => (
                     <div className="row card bg-light" key={ex.id}>
                         {editingEx === ex.id ? ( 
-                            <AddExerciseForm formData={ex} /> 
+                            <AddExerciseForm addExerciseCb={props.addExerciseCb} formData={ex} setEditingEx={setEditingEx} /> 
                         ) : ( 
                         <div> 
                             <h5>{ex.exerciseName}</h5>
