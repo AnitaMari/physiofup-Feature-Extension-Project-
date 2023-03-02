@@ -11,13 +11,15 @@ const EMPTY_EXERCISE = {
   notes: ''
 };
 
-function AddExerciseForm(props) {
+//I'M GOING TO TRY TO REUSE THE FORM TO EDIT DATA TOO
+function AddExerciseForm(props) { //IT WAS WRITTEN PROPS
 
-  const [newExercise, setNewExercise] = useState(EMPTY_EXERCISE);  
-  
+  const [newExercise, setNewExercise] = useState(props.formData || EMPTY_EXERCISE);  
+  //IT WAS ONLY WRITTEN EMPTY_EXERCISE
+
   function handleSubmit(event) {
     event.preventDefault();
-    props.addExerciseCb(newExercise);
+    props.addExerciseCb(newExercise);//I CHANGED PROPS FOR FORMDATA
     setNewExercise(EMPTY_EXERCISE);
   }
 

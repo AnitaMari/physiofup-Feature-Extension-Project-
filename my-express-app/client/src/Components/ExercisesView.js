@@ -53,29 +53,58 @@ function ExercisesView(props) {
       console.log(`Server error: ${err.message}`);
     }
   }
-    
-  // PUT: Modify exercise inputs
-//   async function modifyEx(id) {
-//     let exercise = exercises.find(e => e.id === id);
+ 
+  //MY NEW CODE TO BE ABLE TO MODIFY THE EXERCISES. SO FAR YOU CAN ONLY DELETE THEM OR ADD A NEW ONE.
+  //I COPIED THIS FROM MY WEEKLY RESOLUTIONS PROJECT TO GUIDE ME:
+//   const updateResolution = async id => {
+//     let resolution = resolutions.find(r => r.id === id);
+//     resolution.complete = !resolution.complete;
 
 //     let options = {
-//         method: 'PUT',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(exercise)
+//         method: "PUT",
+//         headers: { "Content-Type": "application/json"},
+//         body: JSON.stringify(resolution)
 //     };
 
-//     try {
-//         let response = await fetch(`/exercises/ex/${id}`, options);
+//     try { 
+//         let response = await fetch(`/days/${id}/resolutions/${id}`, options);
 //         if (response.ok) {
-//             let exercises = await response.json();
-//             setExercises(exercises);
+//             let data = await response.json();
+//             setResolutions(data);
 //         } else {
-//             console.log(`Server error: ${response.status} ${response.statusText}`);
+//             console.log(`Server error: ${response.status}:
+//             ${response.statusText}`);
 //         }
 //     } catch (err) {
-//         console.log(`Server error: ${err.message}`);
+//         console.log(`Network error: ${err.message}`);
 //     }
-// }
+// };
+
+
+  
+//NATALIA'S TRY TO MODIFY THE EXERCISES:
+  // PUT: Modify exercise inputs
+  async function modifyEx(id) {
+    let exercise = exercises.find(e => e.id === id);
+
+    let options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(exercise)
+    };
+
+    try {
+        let response = await fetch(`/exercises/ex/${id}`, options);
+        if (response.ok) {
+            let exercises = await response.json();
+            setExercises(exercises);
+        } else {
+            console.log(`Server error: ${response.status} ${response.statusText}`);
+        }
+    } catch (err) {
+        console.log(`Server error: ${err.message}`);
+    }
+}
 
 // DELETE an exercise
 async function deleteEx( id) {
@@ -113,5 +142,24 @@ async function deleteEx( id) {
       </div>
     );
 }
+
+//THIS IS WHAT I HAD IN MY PROJECT
+// return (
+    
+//   <div className="DayView">
+//     <h3>YOUR {day?.name}'S RESOLUTIONS</h3>
+//    <div className="ResolutionList">
+//       <ResolutionList
+//       resolutions={resolutions}
+//       toggleDoneCb={id => updateResolution(id)}
+//       deleteCb={id => deleteResolution(id)}
+//       />
+//   <h3>Add a New Resolution</h3>
+//   <ResolutionForm addResolutionCb={text => addResolution(text)} />
+//   </div>
+//   </div> 
+// );
+
+
 
 export default ExercisesView;

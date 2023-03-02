@@ -146,7 +146,7 @@ router.get("/ex/:id", async function(req, res, next) {
   });
   
   //modify an exercise
-  router.put("/ex/:id", async (req, res, next) => {
+  router.put("/ex/:id", async (req, res, next) => { 
     let index = req.params.id;
     let { exerciseName, video, series, repetitions, notes } = req.body;
   
@@ -175,5 +175,35 @@ router.get("/ex/:id", async function(req, res, next) {
     }
   });
   
+//THIS IS WHAT I DID IN MY PROJECT TO MODIFY ONE THING THAT WAS A BOOLEAN
+// router.put("/days/:day_id/resolutions/:r_id", async (req, res) => {
+//   let rId = req.params.r_id;
+
+//   try {
+    
+//     let results = await db(`SELECT * FROM resolutions WHERE id = ${rId}`);
+//     if (results.data.length === 0) {
+//       // Resolution not found
+//       res.status(404).send({ error: "Resolution not found" });
+//     } else {
+//       // Resolution found!
+//       let { day_id, text, complete } = req.body;
+//       let sql = `
+//         UPDATE resolutions 
+//         SET day_id = ${day_id}, text = '${text}', complete = ${complete}
+//         WHERE id = ${rId}
+//       `;
+//       // Do the UPDATE
+//       await db(sql);
+      
+//       let results = await db("SELECT * FROM resolutions");
+//       res.send(results.data);
+//     }
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
+
+
 
   module.exports = router

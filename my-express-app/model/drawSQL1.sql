@@ -1,10 +1,10 @@
-DROP TABLE if exists exercises;
+-- DROP TABLE if exists exercises;
 
--- TRUNCATE TABLE programs;
-DROP TABLE if exists programs;
+-- -- TRUNCATE TABLE programs;
+-- DROP TABLE if exists programs;
 
--- TRUNCATE TABLE patients;
-DROP TABLE if exists patients;
+-- -- TRUNCATE TABLE patients;
+-- DROP TABLE if exists patients;
 
 CREATE TABLE patients (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
