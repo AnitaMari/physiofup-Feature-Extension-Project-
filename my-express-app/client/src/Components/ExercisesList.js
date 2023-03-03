@@ -11,7 +11,9 @@ function ExercisesList(props) {
 function handleClick(exId) {
     setEditingEx(exId)
 }
-       
+ 
+
+
   return (
     <div className="container px-1 py-5 mx-auto">
      <h1 className="text-info pt-3">Program File </h1>
@@ -20,7 +22,7 @@ function handleClick(exId) {
                 props.exercises.map(ex => (
                     <div className="row card bg-light" key={ex.id}>
                         {editingEx === ex.id ? ( 
-                            <AddExerciseForm addExerciseCb={props.addExerciseCb} formData={ex} setEditingEx={setEditingEx} /> 
+                            <AddExerciseForm submitExerciseCb={(formData) => props.modifyExCb(ex.id, formData)} formData={ex} setEditingEx={setEditingEx} /> 
                         ) : ( 
                         <div> 
                             <h5>{ex.exerciseName}</h5>

@@ -55,29 +55,6 @@ function ExercisesView(props) {
   }
  
 
-  // PUT: Modify exercise inputs
-  async function modifyEx(id) {
-    let formData = exercises.find(e => e.id === id);
-
-    let options = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(exercise)
-    };
-
-    try {
-        let response = await fetch(`/exercises/ex/${id}`, options);
-        if (response.ok) {
-            let exercises = await response.json();
-            setExercises(exercises);
-        } else {
-            console.log(`Server error: ${response.status} ${response.statusText}`);
-        }
-    } catch (err) {
-        console.log(`Server error: ${err.message}`);
-    }
-}
-
 // DELETE an exercise
 async function deleteEx( id) {
   // Define fetch() options
@@ -97,17 +74,41 @@ async function deleteEx( id) {
       console.log(`Server error: ${err.message}`);
   }
 }
+
+// PUT: Modify exercise inputs
+async function modifyEx(id, formData) {
+ 
+  let options = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+  };
+console.log(formData);
+console.log(id);
+  try {
+      let response = await fetch(`/exercises/ex/${id}`, options);
+      if (response.ok) {
+          let exercises = await response.json();
+          setExercises(exercises);
+      } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+  } catch (err) {
+      console.log(`Server error: ${err.message}`);
+  }
+}
+
  return (
       <div class="bg-white">
       <div class="container-fluid mx-auto col-xl-9 col-lg-7 col-md-6 col-12">
       <div class="row d-flex justify-content-center">
 
         <div className="bg-white">          
-          <ExercisesList exercises={exercises} deleteEx={deleteEx} addExerciseCb={addExercise}/>
+          <ExercisesList exercises={exercises} deleteEx={deleteEx} modifyExCb={modifyEx}/>
         </div>
       </div>
       </div>
-          <AddExerciseForm addExerciseCb={addExercise} />
+          <AddExerciseForm submitExerciseCb={addExercise} />
           <ShareForm exercises={exercises}/>
           
       </div>

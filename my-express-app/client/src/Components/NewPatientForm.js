@@ -10,14 +10,18 @@ const EMPTY_FORM = {
     birthDate: '',
     email: ''
 };
-
-function NewPatientForm({patients, addPatient}) {
-    const [formData, setFormData] = useState(EMPTY_FORM);
+//function NewPatientForm({ patients, addPatient}) { //THIS WAS WRITTEN HERE
+function NewPatientForm(props) { 
+   // const [formData, setFormData] = useState(EMPTY_FORM); I CHANGED THIS FOR THE LINE BELOW
+    //const [formData, setFormData] = useState(formData || EMPTY_FORM);
+    
+    const [newPatient, setNewPatient] = useState(props.formData || EMPTY_FORM);
+    
     const navigate = useNavigate();
 
     function handleChange(event) {
         let { name, value } = event.target;
-        setFormData(data => ({
+        setNewPatient(data => ({ //IT WAS WRITTEN setFormData
             ...data,
             [name]: value
         }));
@@ -25,15 +29,17 @@ function NewPatientForm({patients, addPatient}) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        addPatient(formData);
-        console.log(formData);
-        setFormData(EMPTY_FORM);
-        navigate(`/patients/${patients[patients.length-1].id}`);
+       // addPatient(formData); //DO I NEED THIS?
+       // console.log(formData); // DO I NEED THIS?
+        //setFormData(EMPTY_FORM); // DO I NEED THIS?
+        props.setEditingPat(null);//I ADDED THIS LINE
+        props.addPatientCb(newPatient); //I ADDED THIS
+       // navigate(`/patients/${patients[patients.length-1].id}`); //DO I NEED THIS?
         
     }
 
  
-    return (
+return (
 
   <div className="card">
 
@@ -44,7 +50,7 @@ function NewPatientForm({patients, addPatient}) {
             <div class="form-group col-12 flex-column d-flex">
                 <label className="form-control-label px-1"></label>
                 <input type="text" id="ans" name="firstName" placeholder="First Name"
-                value={formData.firstName}
+                value={newPatient.firstName} //IT WAS WRITTEN formdata.firstName
                 onChange={handleChange}/>     
             </div>
         </div>
@@ -53,7 +59,7 @@ function NewPatientForm({patients, addPatient}) {
             <div class="form-group col-12 flex-column d-flex">
                 <label className="form-control-label px-1"></label>
                 <input type="text" id="ans" name="lastName" placeholder="Last Name"
-                value={formData.lastName}
+                value={newPatient.lastName} //IT WAS WRITTEN formdata.firstName
                 onChange={handleChange}/>     
             </div>
         </div>
@@ -62,7 +68,7 @@ function NewPatientForm({patients, addPatient}) {
             <div class="form-group col-12 flex-column d-flex">
                 <label className="form-control-label px-1"></label>
                 <input type="date" id="ans" name="birthDate" placeholder="Birth Date YYYY-MM-DD"
-                value={formData.birthDate}
+                value={newPatient.birthDate} //IT WAS WRITTEN formdata.firstName
                 onChange={handleChange}/>     
             </div>
         </div>
@@ -71,7 +77,7 @@ function NewPatientForm({patients, addPatient}) {
             <div class="form-group col-12 flex-column d-flex">
                 <label className="form-control-label px-1"></label>
                 <input type="text" id="ans" name="email" placeholder="Email Address"
-                value={formData.email}
+                value={newPatient.email} //IT WAS WRITTEN formdata.email
                 onChange={handleChange}/>     
             </div>
         </div>

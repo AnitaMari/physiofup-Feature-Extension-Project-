@@ -32,48 +32,49 @@ async function getPatients() {
 }
 }
 
+//NATALIA DID THESE 2 FUNCTIONS BELOW TO DELETE AND MODIFY PATIENTS
 //Delete a patient
-// async function deletePatient(id) {
-//   // Define fetch() options
-//   let options = {
-//       method: 'DELETE'
-//   };
+async function deletePat(id) {
+  // Define fetch() options
+  let options = {
+      method: 'DELETE'
+  };
 
-//   try {
-//       let response = await fetch(`/patients/${id}`, options);
-//       if (response.ok) {
-//           let patients = await response.json();
-//           setPatients(patients);
-//       } else {
-//           console.log(`Server error: ${response.status} ${response.statusText}`);
-//       }
-//   } catch (err) {
-//       console.log(`Server error: ${err.message}`);
-//   }
-// }
+  try {
+      let response = await fetch(`/patients/${id}`, options);
+      if (response.ok) {
+          let patients = await response.json();
+          setPatients(patients);
+      } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+  } catch (err) {
+      console.log(`Server error: ${err.message}`);
+  }
+}
 
 //PUT Modify patient's data
-// async function modifyPatient(id) {
-//   let patient = patients.find(p => p.id === id);
+async function modifyPat(id) {
+  let patient = patients.find(p => p.id === id);
 
-//   let options = {
-//       method: 'PUT',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(patient)
-//   };
+  let options = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(patient)
+  };
 
-//   try {
-//       let response = await fetch(`/patients/${id}`, options);
-//       if (response.ok) {
-//           let patients= await response.json();
-//           setPatients(patients);
-//       } else {
-//           console.log(`Server error: ${response.status} ${response.statusText}`);
-//       }
-//   } catch (err) {
-//       console.log(`Server error: ${err.message}`);
-//   }
-// }
+  try {
+      let response = await fetch(`/patients/${id}`, options);
+      if (response.ok) {
+          let patients= await response.json();
+          setPatients(patients);
+      } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+  } catch (err) {
+      console.log(`Server error: ${err.message}`);
+  }
+}
 
   return (
     <div className="bg-info">
