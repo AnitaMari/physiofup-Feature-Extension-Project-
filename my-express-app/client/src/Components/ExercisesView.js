@@ -57,6 +57,9 @@ function ExercisesView(props) {
 
 // DELETE an exercise
 async function deleteEx( id) {
+  let confirm = window.confirm("Are you sure you want to delete this exercise?")
+    
+  if (confirm) {
   // Define fetch() options
   let options = {
       method: 'DELETE'
@@ -73,6 +76,7 @@ async function deleteEx( id) {
   } catch (err) {
       console.log(`Server error: ${err.message}`);
   }
+}
 }
 
 // PUT: Modify exercise inputs

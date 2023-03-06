@@ -7,7 +7,7 @@ import AddProgramForm from "./AddProgramForm";
 import PatientData from "./PatientData";
 import ShowPrograms from "./ShowPrograms";
 
-function PatientFile({patients}) {
+function PatientFile({patients, modifyPatient, deletePatient}) {
   const [programs, setPrograms] = useState([]);
   const { patientId } = useParams();
   console.log(useParams());
@@ -33,7 +33,7 @@ async function getPrograms() {
 }
 
 //POST a new program
-async function addProgram (program) {
+async function addProgram(program) {
   console.log(program);
   let options = {
     method: 'POST',
@@ -55,6 +55,9 @@ async function addProgram (program) {
 
 //Delete a program
 async function deleteProgram(id) {
+  let confirm = window.confirm("Are you sure you want to delete this program?")
+  
+  if (confirm) {
   // Define fetch() options
   let options = {
       method: 'DELETE'
@@ -72,15 +75,15 @@ async function deleteProgram(id) {
       console.log(`Server error: ${err.message}`);
   }
 }
+}
 
- 
   return (
     <div className="PatientFile">
       <div className="container-fluid px-1 py-5 mx-auto" id="headerCard">
     <div className="row d-flex justify-content-center">
     <div className="col-xl-6 col-lg-8 col-md-9 col-11">
     <div className="row justify-content-center text-left pt-3"></div>
-     <PatientData patients={patients}/>
+     <PatientData patients={patients} modifyPatient={modifyPatient} deletePatient={deletePatient}/>
 
   
         <ShowPrograms programs={programs} deleteProgramCb={deleteProgram}/>

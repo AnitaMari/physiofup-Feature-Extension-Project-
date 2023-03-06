@@ -12,8 +12,6 @@ function handleClick(exId) {
     setEditingEx(exId)
 }
  
-
-
   return (
     <div className="container px-1 py-5 mx-auto">
      <h1 className="text-info pt-3">Program File </h1>

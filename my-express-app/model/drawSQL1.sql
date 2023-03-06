@@ -1,10 +1,13 @@
--- DROP TABLE if exists exercises;
+--line 2 and 10 to remove the link between the tables when I delete a patient, I think
+SET foreign_key_checks = 0; 
+DROP TABLE if exists exercises;
 
 -- -- TRUNCATE TABLE programs;
--- DROP TABLE if exists programs;
+DROP TABLE if exists programs;
 
 -- -- TRUNCATE TABLE patients;
--- DROP TABLE if exists patients;
+DROP TABLE if exists patients;
+SET foreign_key_checks = 1;
 
 CREATE TABLE patients (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -24,7 +27,7 @@ CREATE TABLE programs (
     programTitle VARCHAR(100),
     creationDate DATE,
     patientId INT,
-    FOREIGN KEY (patientId) REFERENCES patients(id)
+    FOREIGN KEY (patientId) REFERENCES patients(id) ON DELETE CASCADE
 );
 
 INSERT INTO programs (programTitle, creationDate, patientId)
@@ -40,7 +43,7 @@ CREATE TABLE exercises (
     repetitions BIGINT,
     notes VARCHAR(250),
     programId INT,
-    FOREIGN KEY (programId) REFERENCES programs(id)
+    FOREIGN KEY (programId) REFERENCES programs(id) ON DELETE CASCADE
 );
 
 INSERT INTO exercises (exerciseName, video, series, repetitions, notes, programId )
