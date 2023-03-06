@@ -34,7 +34,7 @@ return (
     
     <div class="container-fluid mx-auto">
     <div class="row d-flex justify-content-center">
-    <div class="col-xl-7 col-lg-8 col-md-9 col-11">
+    {/* <div class="col-xl-7 col-lg-8 col-md-9 col-11"> */}
 
   <div className="card bg-info">
 
@@ -90,7 +90,7 @@ return (
     </div>
     </div>
     </div>
-    </div>
+    //  </div>
 );
 
 } 

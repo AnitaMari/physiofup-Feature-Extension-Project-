@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
 //search by name
 router.get('/search', function(req, res, next) {
   const {search} = req.query
-  db(`SELECT * FROM patients WHERE lastName LIKE '%${search}%'`)
+  db(`SELECT * FROM patients WHERE firstName LIKE '%${search}%' OR lastName LIKE '%${search}%'`)
     .then(results => {
       res.send(results.data);
     })

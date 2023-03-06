@@ -13,7 +13,8 @@ function handleClick(exId) {
 }
  
   return (
-    <div className="container px-1 py-5 mx-auto">
+    // <div className="container px-1 py-5 mx-auto">
+      <div>
      <h1 className="text-info pt-3">Program File </h1>
  
       {
@@ -31,15 +32,18 @@ function handleClick(exId) {
                             <h6>Notes: {ex.notes} </h6>
                         </div>
                       )} 
-                         
-                        <div id="divButton" className="col-6 content-right">
-                        <button className="col-8" onClick={(e) => props.deleteEx(ex.id)} title="delete" type="button">DELETE</button>
-                        </div>
+
+                        <div className= "container"> 
                         
                         <div id="divButton" className="col-6 content-right">
                         <button className="col-8" onClick={(e) => handleClick(ex.id)} title="modify" type="button">MODIFY</button> 
                         </div>
-                                  
+
+                        <div id="divButton" className="col-6 content-right">
+                        <button className="btn btn-danger col-8" onClick={(e) => props.deleteEx(ex.id)} title="delete" type="button">DELETE</button>
+                        </div>
+
+                      </div>            
                     </div>
                 ))
             }

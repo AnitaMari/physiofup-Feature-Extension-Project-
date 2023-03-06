@@ -34,15 +34,17 @@ function PatientData({patients, modifyPatient, deletePatient}) {
           )}
      </div>
      
-     <div id="divButton" className="col-6 content-right">
-      <button className="col-8" onClick={(e) => deletePatient(patientId)} title="delete" type="button">DELETE</button>
-     </div>
-     
-     <div id="divButton" className="col-6 content-right">
+    <div className= "container">
+     <div id="divButton1" className="col-6 content-right">
     <button className="col-8" onClick={(handleClick)} title="modify" type="button">MODIFY</button> 
+    
     </div>
 
-  </div>
+     <div id="divButton2" className="col-6 content-right">
+      <button className="btn btn-danger col-8" onClick={(e) => deletePatient(patientId)} title="delete" type="button">DELETE</button>
+     </div>
+     </div>
+    </div>
     
   );
 }

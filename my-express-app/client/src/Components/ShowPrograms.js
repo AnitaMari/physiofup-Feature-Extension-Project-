@@ -13,7 +13,7 @@ function ShowPrograms(props) {
                 props.programs.map(p => (
                     <div key={p.id}>
                         <div>
-                        <button id="deleteButton" onClick={(e) => props.deleteProgramCb(p.id)} title="delete" type="button"> DELETE </button>
+                        <button id="deleteButton" className="btn btn-danger" onClick={(e) => props.deleteProgramCb(p.id)} title="delete" type="button"> DELETE </button>
                         {`          `}<Link className="text-info h5 text-decoration-none"
                         to={`/programs/program/${p.id}`}>{p.programTitle}
                         </Link>
