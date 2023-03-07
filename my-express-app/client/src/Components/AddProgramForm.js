@@ -19,9 +19,9 @@ function AddProgramForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     props.submitProgramCb(newProgram);
-    console.log(newProgram);
+    setNewProgram(EMPTY_PROGRAM);
     props.setEditingProg(null);
-    // setNewProgram(EMPTY_PROGRAM);
+   
   }
 
   function handleChange(event) {

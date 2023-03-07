@@ -77,7 +77,6 @@ async function deleteProgram(id) {
 }
 }
 
-//I WANT TO MODIFY A PROGRAM
 // PUT: Modify a program (to change the title, basically)
 async function modifyProgram(id, formData) {
  
@@ -112,7 +111,9 @@ console.log(id);
 
   
         <ShowPrograms programs={programs} deleteProgramCb={deleteProgram} modifyProgramCb={modifyProgram}/>
-        <AddProgramForm submitProgramCb={addProgram} programs={programs}/>
+        <AddProgramForm submitProgramCb={addProgram} />
+        {/* I REMOVED THIS TO RESET THE FORM WHEN SUBMITING A NEW PROGRAM
+        programs={programs} */}
     
     </div>
     </div>

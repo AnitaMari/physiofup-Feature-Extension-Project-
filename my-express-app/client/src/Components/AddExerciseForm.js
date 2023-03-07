@@ -17,7 +17,7 @@ function AddExerciseForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     props.submitExerciseCb(newExercise);
-    console.log(newExercise);
+    setNewExercise(EMPTY_EXERCISE);
     props.setEditingEx(null);
   }
 

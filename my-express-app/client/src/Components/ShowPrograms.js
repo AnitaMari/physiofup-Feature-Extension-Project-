@@ -23,18 +23,16 @@ function ShowPrograms(props) {
                     {editingProg === p.id ? ( 
                             <AddProgramForm submitProgramCb={(formData) => props.modifyProgramCb(p.id, formData)} formData={p} setEditingProg={setEditingProg} /> 
                         ) : ( 
-                        <div>
-                          <div id="divButton" className="col-6 content-right">
-                          <button className="col-8" onClick={(e) => handleClick(p.id)} title="modify" type="button">MODIFY</button> 
-                        </div>
-
-                          <div>
-                            <button id="deleteButton" className="btn btn-danger" onClick={(e) => props.deleteProgramCb(p.id)} title="delete" type="button"> DELETE </button>
-                             {`          `}<Link className="text-info h5 text-decoration-none"
+                        <div className= "container">
+                          
+                            <button id="modifyButtonP" className="col-3" onClick={(e) => handleClick(p.id)} title="modify" type="button">MODIFY  TITLE</button> 
+                        
+                            <button id="deleteButtonP" className="btn btn-danger col-4" onClick={(e) => props.deleteProgramCb(p.id)} title="delete" type="button"> DELETE  PROGRAM </button>
+                             {`          `}<Link className="container title text-info h5 text-decoration-none"
                             to={`/programs/program/${p.id}`}>{p.programTitle}
                             </Link>
                           </div>
-                      </div>
+                     
                         )
                   } </div>
                 ))

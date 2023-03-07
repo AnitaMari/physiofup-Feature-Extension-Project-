@@ -4,3 +4,14 @@
 .container {
     display: flex;
 }
+#deleteButtonPat {
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+#modifyButtonPat {
+    margin-bottom: 20px;
+    margin-top: 0px;
+   
+}
