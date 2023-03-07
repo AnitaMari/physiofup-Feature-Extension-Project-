@@ -1,14 +1,6 @@
 linkprograms {
     text-decoration: none;
 }
-
-/* .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap:nowrap; 
-    align-items: stretch; 
-    justify-content: flex-start; 
-} */
  
 .title {
     margin-top: 30px;

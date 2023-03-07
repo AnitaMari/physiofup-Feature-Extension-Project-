@@ -55,7 +55,7 @@ async function addProgram(program) {
 
 //Delete a program
 async function deleteProgram(id) {
-  let confirm = window.confirm("Are you sure you want to delete this program?")
+  let confirm = window.confirm("Are you sure you want to delete this program with all its exercises?")
   
   if (confirm) {
   // Define fetch() options

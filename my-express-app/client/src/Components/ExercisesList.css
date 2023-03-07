@@ -1,0 +1,10 @@
+#deleteButtonEx {
+    margin-left: 20px; 
+    margin-block: 20px;
+ }
+
+#modifyButtonEx {
+    /* margin-bottom: 20px;
+    margin-top: 0px; */
+    margin-block: 20px;
+}

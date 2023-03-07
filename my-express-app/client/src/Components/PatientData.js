@@ -25,22 +25,23 @@ function PatientData({patients, modifyPatient, deletePatient}) {
       {editingPat === true ? ( 
         <NewPatientForm submitPatientCb={(newFormData) => modifyPatient(patientId, newFormData)} formData={patient} setEditingPat={setEditingPat} /> 
           ) : (    
+
           <div>   
            <h5 className="text-info">First Name: {patient?.firstName}</h5>
            <h5 className="text-info">Last Name: {patient?.lastName}</h5>
            <h5 className="text-info">Birth Date: {patient?.birthDate}</h5>
            <h5 className="text-info mb-5">Email Address: {patient?.email}</h5>
-        </div>
+         </div>
+
           )}
-     </div>
-     
-    <div className= "container">
-      <button id= "modifyButtonPat" className="col-2" onClick={(handleClick)} title="modify" type="button">MODIFY</button> 
-      <button id= "deleteButtonPat" className="btn btn-danger col-2" onClick={(e) => deletePatient(patientId)} title="delete" type="button">DELETE</button>
-     </div>
-     </div> 
-  
-    
+
+          <div className= "container">
+            <button id= "modifyButtonPat" className="col-4" onClick={(handleClick)} title="modify" type="button">MODIFY</button> 
+            <button id= "deleteButtonPat" className="btn btn-danger col-4" onClick={(e) => deletePatient(patientId)} title="delete" type="button">DELETE</button>
+         </div>      
+        </div>
+       </div> 
+      
   );
 }
 
