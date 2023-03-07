@@ -77,6 +77,31 @@ async function deleteProgram(id) {
 }
 }
 
+//I WANT TO MODIFY A PROGRAM
+// PUT: Modify a program (to change the title, basically)
+async function modifyProgram(id, formData) {
+ 
+  let options = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+  };
+console.log(formData);
+console.log(id);
+  try {
+      let response = await fetch(`/programs/program/${id}`, options);
+      if (response.ok) {
+          let programs = await response.json();
+          setPrograms(programs);
+      } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+  } catch (err) {
+      console.log(`Server error: ${err.message}`);
+  }
+}
+
+
   return (
     <div className="PatientFile">
       <div className="container-fluid px-1 py-5 mx-auto" id="headerCard">
@@ -86,8 +111,8 @@ async function deleteProgram(id) {
      <PatientData patients={patients} modifyPatient={modifyPatient} deletePatient={deletePatient}/>
 
   
-        <ShowPrograms programs={programs} deleteProgramCb={deleteProgram}/>
-        <AddProgramForm addProgramCb={addProgram} programs={programs}/>
+        <ShowPrograms programs={programs} deleteProgramCb={deleteProgram} modifyProgramCb={modifyProgram}/>
+        <AddProgramForm submitProgramCb={addProgram} programs={programs}/>
     
     </div>
     </div>

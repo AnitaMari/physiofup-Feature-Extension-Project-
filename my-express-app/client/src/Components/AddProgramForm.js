@@ -10,12 +10,18 @@ const EMPTY_PROGRAM = {
 
 function AddProgramForm(props) {
 
-  const [newProgram, setNewProgram] = useState(EMPTY_PROGRAM);  
+  if (props.formData) {
+    props.formData.creationDate = props.formData.creationDate.replace(/T.*/,"");//to remove the time at the end
+  }
+
+  const [newProgram, setNewProgram] = useState(props.formData || EMPTY_PROGRAM);  
   
   function handleSubmit(event) {
     event.preventDefault();
-    props.addProgramCb(newProgram);
-    setNewProgram(EMPTY_PROGRAM);
+    props.submitProgramCb(newProgram);
+    console.log(newProgram);
+    props.setEditingProg(null);
+    // setNewProgram(EMPTY_PROGRAM);
   }
 
   function handleChange(event) {

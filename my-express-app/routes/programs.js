@@ -142,7 +142,10 @@ router.get("/program/:id", async function(req, res, next) {
             `;
   
             await db(sql);
-            let result = await db('SELECT * FROM programs');
+            let patientId = result.data[0].patientId;
+            result = await db(`SELECT * FROM programs WHERE patientId = ${patientId}`);
+            //let result = await db('SELECT * FROM programs'); 
+            //if it doesn't work, try WHERE programId = ${programId}
             let programs = result.data;
             res.send(programs);
         }
@@ -151,5 +154,4 @@ router.get("/program/:id", async function(req, res, next) {
     }
   });
   
-
   module.exports = router
